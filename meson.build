@@ -244,6 +244,10 @@ elif host_machine.system() == 'vinix'
 	rtld_include_dirs += include_directories('sysdeps/vinix/include')
 	libc_include_dirs += include_directories('sysdeps/vinix/include')
 	subdir('sysdeps/vinix')
+elif host_machine.system() == 'lyre'
+	rtld_include_dirs += include_directories('sysdeps/lyre/include')
+	libc_include_dirs += include_directories('sysdeps/lyre/include')
+	subdir('sysdeps/lyre')
 elif host_machine.system() == 'lemon'
 	rtld_include_dirs += include_directories('sysdeps/lemon/include')
 	libc_include_dirs += include_directories('sysdeps/lemon/include')
@@ -258,6 +262,10 @@ elif host_machine.system() == 'astral'
 	internal_conf.set10('MLIBC_MAP_DSO_SEGMENTS', true)
 	internal_conf.set10('MLIBC_MAP_FILE_WINDOWS', true)
 	subdir('sysdeps/astral')
+elif host_machine.system() == 'lykos'
+	rtld_include_dirs += include_directories('sysdeps/lykos/include')
+	libc_include_dirs += include_directories('sysdeps/lykos/include')
+	subdir('sysdeps/lykos')
 else
 	error('No sysdeps defined for OS: ' + host_machine.system())
 endif
