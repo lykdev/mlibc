@@ -272,6 +272,10 @@ elif host_machine.system() == 'nyaux'
 	rtld_include_dirs += include_directories('sysdeps/nyaux/include')
 	libc_include_dirs += include_directories('sysdeps/nyaux/include')
 	subdir('sysdeps/nyaux')
+elif host_machine.system() == 'lykos'
+	rtld_include_dirs += include_directories('sysdeps/lykos/include')
+	libc_include_dirs += include_directories('sysdeps/lykos/include')
+	subdir('sysdeps/lykos')
 else
 	error('No sysdeps defined for OS: ' + host_machine.system())
 endif
@@ -375,7 +379,6 @@ internal_sources = [
 	'options/internal/generic/ensure.cpp',
 	'options/internal/generic/essential.cpp',
 	'options/internal/generic/frigg.cpp',
-	'options/internal/generic/getopt.cpp',
 	'options/internal/generic/global-config.cpp',
 	'options/internal/generic/inline-emitter.cpp',
 	'options/internal/generic/locale.cpp',
@@ -418,7 +421,6 @@ if not no_headers
 		'options/internal/include/bits/threads.h',
 		'options/internal/include/bits/winsize.h',
 		'options/internal/include/bits/search.h',
-		'options/internal/include/bits/getopt.h',
 		subdir: 'bits'
 	)
 endif
