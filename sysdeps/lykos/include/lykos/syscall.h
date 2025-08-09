@@ -3,15 +3,26 @@
 
 #include <stdint.h>
 
-#define SYSCALL_CLOSE      0
-#define SYSCALL_DEBUG_LOG  1
-#define SYSCALL_EXIT       2
-#define SYSCALL_SEEK       3
-#define SYSCALL_MMAP       4
-#define SYSCALL_OPEN       5
-#define SYSCALL_READ       6
-#define SYSCALL_WRITE      7
-#define SYSCALL_TCB_SET    8
+#define SYSCALL_ACCEPT       0
+#define SYSCALL_BIND         1
+#define SYSCALL_CLOSE        2
+#define SYSCALL_CONNECT      3
+#define SYSCALL_DEBUG_LOG    4
+#define SYSCALL_EXIT         5
+#define SYSCALL_GETPEERNAME  6
+#define SYSCALL_GETSOCKNAME  7
+#define SYSCALL_IOCTL        8
+#define SYSCALL_LISTEN       9
+#define SYSCALL_MMAP        10
+#define SYSCALL_OPEN        11
+#define SYSCALL_READ        12
+#define SYSCALL_RECV        13
+#define SYSCALL_SEEK        14
+#define SYSCALL_SEND        15
+#define SYSCALL_SHUTDOWN    16
+#define SYSCALL_SOCKET      17
+#define SYSCALL_TCB_SET     18
+#define SYSCALL_WRITE       19
 
 #ifdef __cplusplus
 extern "C"
