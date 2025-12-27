@@ -1,27 +1,21 @@
-sysdep_supported_options = {
-    'bsd':   true,
-    'glibc': true,
-    'linux': true,
-    'posix': true
-}
+sysdep_supported_options = {'bsd': true, 'glibc': true, 'linux': true, 'posix': true}
 
 rtld_sources += files(
-	'generic/io.cpp',
-	'generic/memory.cpp',
-	'generic/other.cpp',
+    'generic/io.cpp',
+    'generic/memory.cpp',
+    'generic/other.cpp',
     'generic/socket.cpp',
 )
 
 libc_sources += files(
-	'generic/entry.cpp',
-	'generic/io.cpp',
-	'generic/memory.cpp',
-	'generic/other.cpp',
-    'generic/socket.cpp'
+    'generic/entry.cpp',
+    'generic/io.cpp',
+    'generic/memory.cpp',
+    'generic/other.cpp',
 )
 
 if not no_headers
-	install_headers(
+    install_headers(
         'include/abi-bits/access.h',
         'include/abi-bits/auxv.h',
         'include/abi-bits/blkcnt_t.h',
@@ -122,39 +116,39 @@ if not no_headers
         'include/abi-bits/vt.h',
         'include/abi-bits/wait.h',
         'include/abi-bits/xattr.h',
-		subdir: 'abi-bits'
-	)
-	install_headers(
-		'include/lykos/syscall.h',
-		subdir: 'lykos'
-	)
+        subdir: 'abi-bits',
+    )
+    install_headers('include/lykos/syscall.h', subdir: 'lykos')
 endif
 
 if not headers_only
-	crt = custom_target('crt0',
-		build_by_default: true,
-		command: c_compiler.cmd_array() + ['-c', '-o', '@OUTPUT@', '@INPUT@'],
-		input: host_machine.cpu_family() / 'crt/crt0.S',
-		output: 'crt0.o',
-		install: true,
-		install_dir: get_option('libdir')
-	)
+    crt = custom_target(
+        'crt0',
+        build_by_default: true,
+        command: c_compiler.cmd_array() + ['-c', '-o', '@OUTPUT@', '@INPUT@'],
+        input: host_machine.cpu_family() / 'crt/crt0.S',
+        output: 'crt0.o',
+        install: true,
+        install_dir: get_option('libdir'),
+    )
 
-	custom_target('crti',
-		build_by_default: true,
-		command: c_compiler.cmd_array() + ['-c', '-o', '@OUTPUT@', '@INPUT@'],
-		input: host_machine.cpu_family() / 'crt/crti.S',
-		output: 'crti.o',
-		install: true,
-		install_dir: get_option('libdir')
-	)
+    custom_target(
+        'crti',
+        build_by_default: true,
+        command: c_compiler.cmd_array() + ['-c', '-o', '@OUTPUT@', '@INPUT@'],
+        input: host_machine.cpu_family() / 'crt/crti.S',
+        output: 'crti.o',
+        install: true,
+        install_dir: get_option('libdir'),
+    )
 
-	custom_target('crtn',
-		build_by_default: true,
-		command: c_compiler.cmd_array() + ['-c', '-o', '@OUTPUT@', '@INPUT@'],
-		input: host_machine.cpu_family() / 'crt/crtn.S',
-		output: 'crtn.o',
-		install: true,
-		install_dir: get_option('libdir')
-	)
+    custom_target(
+        'crtn',
+        build_by_default: true,
+        command: c_compiler.cmd_array() + ['-c', '-o', '@OUTPUT@', '@INPUT@'],
+        input: host_machine.cpu_family() / 'crt/crtn.S',
+        output: 'crtn.o',
+        install: true,
+        install_dir: get_option('libdir'),
+    )
 endif
