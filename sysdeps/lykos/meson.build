@@ -4,7 +4,6 @@ rtld_sources += files(
     'generic/io.cpp',
     'generic/memory.cpp',
     'generic/other.cpp',
-    'generic/socket.cpp',
 )
 
 libc_sources += files(
