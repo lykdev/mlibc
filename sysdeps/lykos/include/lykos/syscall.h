@@ -17,7 +17,7 @@ enum
     SYSCALL_MMAP,
     // PROC
     SYSCALL_EXIT,
-    SYSCALL_TCB
+    SYSCALL_TCB_SET
 };
 
 #ifndef __MLIBC_ABI_ONLY
